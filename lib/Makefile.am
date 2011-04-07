@@ -22,58 +22,57 @@
 include $(top_srcdir)/Makefile.common
 
 # list of programs run by "make check" and "make distcheck"
-TESTS = test_all
+# TESTS = test_all
 
 # ----------------------------------------------------------------
-# howto C++ library: libgnuradio-howto.so
+# Funcube Dongle C++ library: libgnuradio-fcd.so
 # ----------------------------------------------------------------
 
 # C/C++ headers get installed in ${prefix}/include/$(modname)
 modinclude_HEADERS = \
-	howto_square_ff.h \
-	howto_square2_ff.h
+    fcd_source_c.h
 
-lib_LTLIBRARIES = libgnuradio-howto.la
+lib_LTLIBRARIES = libgnuradio-fcd.la
 
-libgnuradio_howto_la_SOURCES = \
-	howto_square_ff.cc \
-	howto_square2_ff.cc
+libgnuradio_fcd_la_SOURCES = \
+    fcd_source_c.cc
 
-libgnuradio_howto_la_LIBADD = \
-	$(GNURADIO_CORE_LA)
+libgnuradio_fcd_la_LIBADD = \
+    $(GNURADIO_CORE_LA) \
+    $(GNURADIO_AUDIO_LA)
 
-libgnuradio_howto_la_LDFLAGS = $(NO_UNDEFINED) $(LTVERSIONFLAGS)
+libgnuradio_fcd_la_LDFLAGS = $(NO_UNDEFINED) $(LTVERSIONFLAGS)
 
 # ----------------------------------------------------------------
-# howto C++ QA library: libgnuradio-howto-qa.so (not installed)
+# Funcube Dongle C++ QA library: libgnuradio-fcd-qa.so (not installed)
 # ----------------------------------------------------------------
 
-noinst_LTLIBRARIES = libgnuradio-howto-qa.la
+#noinst_LTLIBRARIES = libgnuradio-fcd-qa.la
 
-libgnuradio_howto_qa_la_SOURCES = \
-	qa_howto.cc \
-	qa_howto_square_ff.cc \
-	qa_howto_square2_ff.cc
+#libgnuradio_howto_qa_la_SOURCES = \
+#    qa_howto.cc \
+#    qa_howto_square_ff.cc \
+#    qa_howto_square2_ff.cc
 
-libgnuradio_howto_qa_la_LDFLAGS = $(NO_UNDEFINED) -version-info 0:0:0
+#libgnuradio_fcd_qa_la_LDFLAGS = $(NO_UNDEFINED) -version-info 0:0:0
 
-libgnuradio_howto_qa_la_LIBADD = \
-	libgnuradio-howto.la \
-	$(CPPUNIT_LIBS)
+#libgnuradio_fcd_qa_la_LIBADD = \
+#    libgnuradio-fcd.la \
+#    $(CPPUNIT_LIBS)
 
 # ----------------------------------------------------------------
 # headers that don't get installed
 # ----------------------------------------------------------------
-noinst_HEADERS = \
-	qa_howto.h \
-	qa_howto_square_ff.h \
-	qa_howto_square2_ff.h
+#noinst_HEADERS = \
+#	qa_howto.h \
+#	qa_howto_square_ff.h \
+#	qa_howto_square2_ff.h
 
 # ----------------------------------------------------------------
 # test program
 # ----------------------------------------------------------------
-noinst_PROGRAMS = \
-	test_all
+#noinst_PROGRAMS = \
+#	test_all
 
-test_all_SOURCES = test_all.cc
-test_all_LDADD   = libgnuradio-howto-qa.la
+#test_all_SOURCES = test_all.cc
+#test_all_LDADD   = libgnuradio-howto-qa.la
