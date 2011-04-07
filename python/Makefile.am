@@ -1,5 +1,5 @@
 #
-# Copyright 2004,2010 Free Software Foundation, Inc.
+# Copyright 2011 Free Software Foundation, Inc.
 # 
 # This file is part of GNU Radio
 # 
@@ -21,11 +21,11 @@
 
 include $(top_srcdir)/Makefile.common
 
-TESTS = run_tests
+#TESTS = run_tests
 EXTRA_DIST = run_tests.in
 
 modpython_PYTHON = \
-	__init__.py
+    __init__.py
 
 noinst_PYTHON = \
-	qa_howto.py			
+    qa_fcd.py			
