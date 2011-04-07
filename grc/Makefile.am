@@ -1,5 +1,5 @@
 #
-# Copyright 2009 Free Software Foundation, Inc.
+# Copyright 2011 Free Software Foundation, Inc.
 # 
 # This file is part of GNU Radio
 # 
@@ -24,6 +24,5 @@ include $(top_srcdir)/Makefile.common
 grcblocksdir = $(grc_blocksdir)
 
 dist_grcblocks_DATA = \
-	howto_square_ff.xml \
-	howto_square2_ff.xml
+    fcd_source_c.xml
 

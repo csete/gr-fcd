@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<block>
+  <name>Funcube Dongle source</name>
+  <key>fcd_source_c</key>
+  <category>Sources</category>
+  <import>import fcd</import>
+  <make>fcd.fcd_source_c()</make>
+
+  <source>
+    <name>out</name>
+    <type>complex</type>
+  </source>
+</block>
