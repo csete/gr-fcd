@@ -1,5 +1,5 @@
 #
-# Copyright 2009 Free Software Foundation, Inc.
+# Copyright 2011 Free Software Foundation, Inc.
 # 
 # This file is part of GNU Radio
 # 
@@ -22,11 +22,13 @@
 include $(top_srcdir)/Makefile.common
 
 if PYTHON
-
+# FIXME
 dist_bin_SCRIPTS = \
-	howto_square.py
+    fcd_nfm_rx.py
 
 EXTRA_DIST = \
-	howto_square.grc
+    fcd_nfm_rx.grc
+
+
 
 endif
