@@ -31,7 +31,7 @@ STAMPS =
 
 
 # The name of this "out-of-tree" module
-modname = howto
+modname = fcd
 
 # Make rebuilds less verbose with stuff we can safely ignore
 # about GNU make only extensions.
@@ -50,6 +50,7 @@ AM_CPPFLAGS = \
 	$(PYTHON_CPPFLAGS) \
 	$(CPPUNIT_INCLUDES) \
 	$(GNURADIO_CORE_CPPFLAGS)
+	$(GNURADIO_AUDIO_CPPFLAGS)
 
 # these are used by both SWIG and CXX
 STD_DEFINES_AND_INCLUDES = \
@@ -57,6 +58,8 @@ STD_DEFINES_AND_INCLUDES = \
 	-I$(abs_top_srcdir)/lib \
 	-I$(GNURADIO_CORE_INCLUDEDIR) \
 	-I$(GNURADIO_CORE_INCLUDEDIR)/swig
+	-I$(GNURADIO_AUDIO_INCLUDEDIR) \
+	-I$(GNURADIO_AUDIO_INCLUDEDIR)/swig
 
 # includes
 modincludedir = $(includedir)/$(modname)
