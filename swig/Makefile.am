@@ -22,7 +22,7 @@
 include $(top_srcdir)/Makefile.common
 include $(top_srcdir)/Makefile.swig
 
-noinst_GUILE  = howto.test
+noinst_GUILE  = fcd.test
 
 AM_CPPFLAGS += -I$(top_srcdir)/lib 
 
@@ -30,29 +30,29 @@ AM_CPPFLAGS += -I$(top_srcdir)/lib
 # SWIG interfaces and libraries
 
 TOP_SWIG_IFILES = \
-	howto_swig.i
+    fcd_swig.i
 
 # Install so that they end up available as:
-#   import howto
+#   import fcd
 # This ends up at:
 #   ${prefix}/lib/python${python_version}/site-packages/$(modname)
-howto_swig_pythondir_category = $(modname)
+fcd_swig_pythondir_category = $(modname)
 
 # additional libraries for linking with the SWIG-generated library
-howto_swig_la_swig_libadd = \
-	$(top_builddir)/lib/libgnuradio-howto.la
+fcd_swig_la_swig_libadd = \
+	$(top_builddir)/lib/libgnuradio-fcd.la
 
 # additional SWIG files to be installed
-howto_swiginclude_headers = \
-	howto_square_ff.i \
-	howto_square2_ff.i
+fcd_swiginclude_headers = \
+	fcd_source_c.i
 
-EXTRA_DIST = $(howto_swiginclude_headers)
+
+EXTRA_DIST = $(fcd_swiginclude_headers)
 
 if GUILE
 TESTS = run_guile_tests
 nobase_guile_DATA = \
-	gnuradio/howto_swig.scm
+	gnuradio/fcd_swig.scm
 endif
 
 EXTRA_DIST += $(nobase_guile_DATA)
