@@ -7,6 +7,6 @@
 /*.la
 /*.lo
 /*.pyc
-/howto.cc
-/howto.py
+/fcd.cc
+/fcd.py
 /test_all
