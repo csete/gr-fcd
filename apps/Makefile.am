@@ -23,11 +23,11 @@ include $(top_srcdir)/Makefile.common
 
 if PYTHON
 # FIXME
-dist_bin_SCRIPTS = \
-    fcd_nfm_rx.py
+#dist_bin_SCRIPTS = \
+#    fcd_nfm_rx.py
 
-EXTRA_DIST = \
-    fcd_nfm_rx.grc
+#EXTRA_DIST = \
+#    fcd_nfm_rx.grc
 
 
 
