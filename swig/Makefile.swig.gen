@@ -87,9 +87,9 @@ _fcd_swig_la_SOURCES = 			\
 	python/fcd_swig.cc		\
 	$(fcd_swig_la_swig_sources)
 
-howto_swig_python_PYTHON =			\
-	howto_swig.py			\
-	$(howto_swig_python)
+fcd_swig_python_PYTHON =			\
+	fcd_swig.py			\
+	$(fcd_swig_python)
 
 _fcd_swig_la_LIBADD =			\
 	$(STD_SWIG_LA_LIB_ADD)		\
