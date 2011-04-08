@@ -9,4 +9,10 @@ install-sh
 ltmain.sh
 missing
 py-compile
+config.h
+config.log
+config.status
+libtool
+setup_guile_test_env
+stamp-h1
 
