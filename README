@@ -1,33 +1,16 @@
-#
-# Copyright 2005,2006,2009 Free Software Foundation, Inc.
-# 
-# This file is part of GNU Radio
-# 
-# GNU Radio is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3, or (at your option)
-# any later version.
-# 
-# GNU Radio is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with GNU Radio; see the file COPYING.  If not, write to
-# the Free Software Foundation, Inc., 51 Franklin Street,
-# Boston, MA 02110-1301, USA.
-# 
+This package (and the resulting tarball) contains a GNU Radio block
+for the Funcube Dongle. The Funcube Dongle is a software defined radio
+receiver in a USB stick covering 64 MHz - 1.7 GHz. More info about the
+Funcube Dongle is avaialble at http://www.funcubedongle.com/
 
-This directory (and the resulting tarball) contains a build tree with
-examples, Makefiles, etc that demonstrate how to write signal
-processing blocks for the GNU Radio system.  This directory is
-intentionally distributed separately from the unified tarball of the
-rest of GNU Radio in order to avoid problems for people who have begun
-to write blocks with a modified copy of gr-howto-write-a-block.
+The Funcube Dongle provides I/Q data via USB audio and its control
+interface (frequency, gains, filters) uses the USB HID api. This block
+wraps both the audio input and the control interface into one convenient
+GNU Radio source block with a complex data stream output that can be used
+in GNU Radio application written in C++, Python and the GNU Radio Companion.
 
-This package requires that gnuradio-core is already installed.  It
-also depends on some GNU Radio prerequisites, such as Boost and
+This package requires that gnuradio-core and gnuradio-audio is already
+installed. It also depends on some GNU Radio prerequisites, such as Boost and
 cppunit.
 
 To build the examples from the tarball use the normal recipe:
@@ -43,3 +26,10 @@ git doesn't contain configure or the generated Makefiles.
   $ ./configure
   $ make
   $ make check
+  
+This package was created by Alexandru Csete OZ9AEC, and it is based on the
+gr-howto-write-a-block example package by Eric Blossom and contributors.
+The version of this package corresponds to the GNU Radio version. If you
+recompile using a different version of GNU Radio you can change the version
+number in the version.sh script.
+
