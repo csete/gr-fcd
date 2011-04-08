@@ -8,3 +8,5 @@
 /guile
 /python
 /run_guile_tests
+*.la
+*.lo
