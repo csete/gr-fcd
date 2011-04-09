@@ -22,8 +22,17 @@
 
 rm -fr config.cache autom4te*.cache
 
+echo "aclocal -I config"
 aclocal -I config
+
+echo "autoconf"
 autoconf
+
+echo "autoheader"
 autoheader
+
+echo "libtoolize --automake -c -f"
 libtoolize --automake -c -f
+
+echo "automake --add-missing -c -f -Wno-portability"
 automake --add-missing -c -f -Wno-portability
