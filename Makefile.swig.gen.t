@@ -38,15 +38,6 @@
 @NAME@_pythondir = $(pythondir)/$(@NAME@_pythondir_category)
 @NAME@_pylibdir = $(pyexecdir)/$(@NAME@_pylibdir_category)
 
-# The .so libraries for the guile modules get installed whereever guile
-# is installed, usually /usr/lib/guile/gnuradio/
-# FIXME: determince whether these should be installed with gnuradio.
-@NAME@_scmlibdir = $(libdir)
-
-# The scm files for the guile modules get installed where ever guile
-# is installed, usually /usr/share/guile/site/@NAME@
-# FIXME: determince whether these should be installed with gnuradio.
-@NAME@_scmdir = $(guiledir)
 
 ## SWIG headers are always installed into the same directory.
 
@@ -112,33 +103,4 @@ python/@NAME@.cc: @NAME@.py
 
 endif		# end of if python
 
-if GUILE
-
-@NAME@_scmlib_LTLIBRARIES = 		\
-	libguile-gnuradio-@NAME@.la
-libguile_gnuradio_@NAME@_la_SOURCES =	\
-	guile/@NAME@.cc			\
-	$(@NAME@_la_swig_sources)
-nobase_@NAME@_scm_DATA = 		\
-	gnuradio/@NAME@.scm 		\
-	gnuradio/@NAME@-primitive.scm
-libguile_gnuradio_@NAME@_la_LIBADD = 	\
-	$(STD_SWIG_LA_LIB_ADD)		\
-	$(@NAME@_la_swig_libadd)
-libguile_gnuradio_@NAME@_la_LDFLAGS = 	\
-	$(STD_SWIG_LA_LD_FLAGS)		\
-	$(@NAME@_la_swig_ldflags)
-libguile_gnuradio_@NAME@_la_CXXFLAGS = 	\
-	$(STD_SWIG_CXX_FLAGS)		\
-	-I$(top_builddir) 		\
-	$(@NAME@_la_swig_cxxflags)
-
-guile/@NAME@.cc: gnuradio/@NAME@.scm
-gnuradio/@NAME@.scm: @NAME@.i
-gnuradio/@NAME@-primitive.scm: gnuradio/@NAME@.scm
-
-# Include the guile dependencies for this file
--include guile/@NAME@.d
-
-endif				# end of GUILE
 

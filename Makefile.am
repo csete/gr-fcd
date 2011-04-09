@@ -38,4 +38,4 @@ SUBDIRS = config lib swig python grc apps
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = gnuradio-fcd.pc
 
-DISTCLEANFILES += gr-fcd*.tar.gz
+DISTCLEANFILES += gnuradio-fcd*.tar.gz

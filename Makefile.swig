@@ -51,26 +51,6 @@ STD_SWIG_PYTHON_ARGS =				\
 	$(WITH_SWIG_INCLUDES)			\
 	$(WITH_INCLUDES)
 
-# NOTE: -Linkage passive and -Linkage module don't define SWIG_init()
-SWIG_GUILE_FLAGS =	\
-	-guile		\
-	-scm		\
-	-scmstub	\
-	-package gnuradio \
-	-Linkage module \
-	-proxy \
-	-goopsprefix gr: \
-	-emit-slot-accessors \
-	-emit-setters \
-	-outdir .
-
-## standard swig flags used by most components
-
-STD_SWIG_GUILE_ARGS =				\
-	$(SWIG_GUILE_FLAGS)			\
-	$(STD_DEFINES_AND_INCLUDES)		\
-	$(WITH_SWIG_INCLUDES)			\
-	$(WITH_INCLUDES)
 
 ## standard SWIG LD flags for library creation
 
@@ -115,16 +95,6 @@ swig_all_built_sources += $(foreach IFILE,$(TOP_SWIG_IFILES), $(patsubst %.i,pyt
 swig_all_built_sources += $(foreach IFILE,$(TOP_SWIG_IFILES), $(patsubst %.i,python/%.cc,$(IFILE)))
 endif
 
-if GUILE
-# Create a list of .scm files based on the top level .i files.
-GUILE_GEN = $(foreach IFILE,$(TOP_SWIG_IFILES), $(patsubst %.i,gnuradio/%.scm,$(IFILE)))
-swig_built_sources += $(GUILE_GEN)
-swig_all_built_sources += $(GUILE_GEN)
-
-# Now add -primitive.scm, .cc to _all_
-swig_all_built_sources += $(foreach IFILE,$(TOP_SWIG_IFILES), $(patsubst %.i,gnuradio/%-primitive.scm,$(IFILE)))
-swig_all_built_sources += $(foreach IFILE,$(TOP_SWIG_IFILES), $(patsubst %.i,guile/%.cc,$(IFILE)))
-endif
 
 # N.B. Only $(swig_built_sources), not $(swig_all_built_sources)
 BUILT_SOURCES += $(swig_built_sources)
@@ -134,26 +104,10 @@ no_dist_files = $(swig_all_built_sources)
 
 CLEANFILES += $(swig_all_built_sources)
 CLEANFILES += python/*.lo python/*.o python/*.d
-CLEANFILES += guile/*.lo  guile/*.o  guile/*.d
 
 
 ## SWIG suffixes for automake to know about
-SUFFIXES = .i .scm .py
-
-# Compile a .i to what guile needs. We use -o to set the output file name,
-# or even with -outdir guile in SWIG_GUILE_ARGS, swig keeps putting a 
-# gnuradio_core_*_wrap.cxx in the source directory.
-gnuradio/%.scm : %.i
-	@echo "Compile .i to .scm"
-	@test -d "guile" || $(mkinstalldirs) "guile"
-	@test -d "gnuradio" || $(mkinstalldirs) "gnuradio"
-	$(SWIG) $(STD_SWIG_GUILE_ARGS) $($*_swig_args) \
-		-MD -MF guile/$*.Std \
-		-module $* -o guile/$*.cc $<
-	$(SED) -e 's|guile/\(.*\)\.cc:|gnuradio/\1.scm:|' guile/$*.Std > guile/$*.d
-	$(SED) -i -e 's/<--dummy-[0-9]\+-->/<top>/g' gnuradio/$*.scm
-	$(SED) -i -e 's/^(export /(export-safely /' gnuradio/$*.scm
-	$(RM) guile/$*.Std
+SUFFIXES = .i .py
 
 # Compile a .i file to what python needs
 .i.py:

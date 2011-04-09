@@ -108,8 +108,11 @@ m4_define([GR_STANDALONE],
   AC_CHECK_PROG([XMLTO],[xmlto],[yes],[])
   AM_CONDITIONAL([HAS_XMLTO], [test x$XMLTO = xyes])
 
-  PKG_CHECK_MODULES(GNURADIO_CORE, gnuradio-core >= 3)
+  PKG_CHECK_MODULES(GNURADIO_CORE, gnuradio-core >= 3.4)
   LIBS="$LIBS $GNURADIO_CORE_LIBS"
+
+  PKG_CHECK_MODULES(GNURADIO_AUDIO, gnuradio-audio >= 3.4)
+  LIBS="$LIBS $GNURADIO_AUDIO_LIBS"
 
   gnuradio_core_GUILE_LOAD_PATH="`pkg-config --variable=guile_load_path gnuradio-core`"
   gnuradio_core_LIBDIRPATH="`pkg-config --variable=libdir gnuradio-core`"
@@ -130,30 +133,12 @@ m4_define([GR_STANDALONE],
   )
   AM_CONDITIONAL([PYTHON], [test x$enable_python = xyes])
 
-  dnl Allow user to choose whether to generate SWIG/Guile
-  dnl Default is disabled
-  AC_ARG_ENABLE([guile],
-    [AS_HELP_STRING([--enable-guile],
-      [generate SWIG/Guile components (default is no)])],
-    [case "${enableval}" in
-       yes) enable_guile=yes ;;
-       no) enable_guile=no ;;
-       *) AC_MSG_ERROR([bad value ${enableval} for --enable-guile]) ;;
-     esac],
-    [enable_guile=no]
-  )
-  AM_CONDITIONAL([GUILE], [test x$enable_guile = xyes])
-
-  dnl see if GUILE is installed
-  if test x${enable_guile} == xyes; then
-    AC_PATH_PROG(GUILE,guile)
-  fi
 
   dnl Define where to look for cppunit includes and libs
   dnl sets CPPUNIT_CFLAGS and CPPUNIT_LIBS
   dnl Try using pkg-config first, then fall back to cppunit-config.
-  PKG_CHECK_EXISTS(cppunit,
-    [PKG_CHECK_MODULES(CPPUNIT, cppunit >= 1.9.14)],
-    [AM_PATH_CPPUNIT([1.9.14],[],
-		     [AC_MSG_ERROR([GNU Radio requires cppunit.  Stop])])])
+  dnl PKG_CHECK_EXISTS(cppunit,
+  dnl  [PKG_CHECK_MODULES(CPPUNIT, cppunit >= 1.9.14)],
+  dnl  [AM_PATH_CPPUNIT([1.9.14],[],
+  dnl		     [AC_MSG_ERROR([GNU Radio requires cppunit.  Stop])])])
 ])
