@@ -37,7 +37,7 @@ AC_CANONICAL_TARGET
 GR_VERSION
 dnl ustar required to have pathnames > 99 chars
 _AM_SET_OPTION([tar-ustar])
-AM_INIT_AUTOMAKE(gr-fcd,$RELEASE)
+AM_INIT_AUTOMAKE(gnuradio-fcd,$RELEASE)
 
 dnl This is kind of non-standard, but it sure shortens up this file :-)
 dnl FIXME: Include gnuradio-audio in GR_STANDALONE
@@ -79,6 +79,7 @@ dnl AX_BOOST_WSERIALIZATION
 
 AC_CONFIG_FILES([\
 	  Makefile \
+      gnuradio-fcd.pc \
 	  apps/Makefile \
 	  config/Makefile \
 	  grc/Makefile \
@@ -89,4 +90,4 @@ AC_CONFIG_FILES([\
 
 AC_OUTPUT
 
-echo Configured gr-fcd release $RELEASE for build.
+echo Configured gnuradio-fcd release $RELEASE for build.

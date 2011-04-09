@@ -36,6 +36,6 @@ EXTRA_DIST = \
 SUBDIRS = config lib swig python grc apps
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA =
+pkgconfig_DATA = gnuradio-fcd.pc
 
 DISTCLEANFILES += gr-fcd*.tar.gz
