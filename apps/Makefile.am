@@ -46,7 +46,8 @@ if PYTHON
 #dist_bin_SCRIPTS = \
 #    fcd_nfm_rx.py
 
-#EXTRA_DIST = \
+EXTRA_DIST = \
+    fcd_fft_wx.grc
 #    fcd_nfm_rx.grc
 
 endif
