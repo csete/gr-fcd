@@ -9,7 +9,7 @@ wraps both the audio input and the control interface into one convenient
 GNU Radio source block with a complex data stream output that can be used
 in GNU Radio application written in C++, Python and the GNU Radio Companion.
 
-This package requires that gnuradio-core and gnuradio-audio is already
+This package requires that gnuradio-core and gnuradio-audio 3.4 is already
 installed. It also depends on some GNU Radio prerequisites, such as Boost and
 cppunit.
 
@@ -29,7 +29,5 @@ git doesn't contain configure or the generated Makefiles.
   
 This package was created by Alexandru Csete OZ9AEC, and it is based on the
 gr-howto-write-a-block example package by Eric Blossom and contributors.
-The version of this package corresponds to the GNU Radio version. If you
-recompile using a different version of GNU Radio you can change the version
-number in the version.sh script.
+
 
