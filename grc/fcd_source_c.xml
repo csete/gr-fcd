@@ -1,13 +1,29 @@
 <?xml version="1.0"?>
 <block>
-  <name>Funcube Dongle source</name>
-  <key>fcd_source_c</key>
-  <category>Sources</category>
-  <import>import fcd</import>
-  <make>fcd.source_c()</make>
+    <name>Funcube Dongle Source</name>
+    <key>fcd_source_c</key>
+    <category>Sources</category>
+    <import>import fcd</import>
+    <make>fcd.source_c($device_name)</make>
+    <param>
+        <name>Device Name</name>
+        <key>device_name</key>
+        <value>hw:1</value>
+        <type>string</type>
+        <hide>#if $device_name() then 'none' else 'part'#</hide>
+    </param>
 
-  <source>
-    <name>out</name>
-    <type>complex</type>
-  </source>
+    <source>
+      <name>out</name>
+      <type>complex</type>
+    </source>
+    <doc>
+This block wraps the Funcube Dongle USB audio input and the USB
+HID control interface into one convenient GNU Radio source block.
+
+The sample rate is fixed at 96ksps.
+
+To find the device name on Linux type:
+   cat /proc/asound/cards
+	</doc>
 </block>

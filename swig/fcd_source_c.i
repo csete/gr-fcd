@@ -7,10 +7,11 @@
  */
 GR_SWIG_BLOCK_MAGIC(fcd,source_c);
 
-fcd_source_c_sptr fcd_make_source_c ();
+fcd_source_c_sptr fcd_make_source_c (const std::string device_name = "");
 
 class fcd_source_c : public gr_hier_block2
 {
-private:
-  fcd_source_c ();
+public:
+  fcd_source_c (const std::string device_name = "");
+  ~fcd_source_c();
 };
