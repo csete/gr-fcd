@@ -4,7 +4,7 @@
   <key>fcd_source_c</key>
   <category>Sources</category>
   <import>import fcd</import>
-  <make>fcd.fcd_source_c()</make>
+  <make>fcd.source_c()</make>
 
   <source>
     <name>out</name>
