@@ -85,7 +85,6 @@ AC_CONFIG_FILES([\
 	  grc/Makefile \
 	  lib/Makefile \
 	  python/Makefile \
-	  python/run_tests \
 	  swig/Makefile \
 	  swig/run_guile_tests \
 	])
@@ -93,7 +92,6 @@ AC_CONFIG_FILES([\
 dnl run_tests is created from run_tests.in.  Make it executable.
 AC_CONFIG_COMMANDS([run_tests],
 		   [
-		    chmod +x python/run_tests
 		    chmod +x swig/run_guile_tests
 		   ])
 
