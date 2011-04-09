@@ -35,7 +35,7 @@
 #include <gr_quadrature_demod_cf.h>
 #include <gr_audio_sink.h>
 #include <fcd_source_c.h>
-#include <gr_null_sink.h>
+
 
 int main(int argc, char **argv)
 {
@@ -48,8 +48,6 @@ int main(int argc, char **argv)
 
     // FCD source
     fcd_source_c_sptr fcd = fcd_make_source_c("hw:1");
-    
-    gr_null_sink_sptr nullsink = gr_make_null_sink(sizeof(float));
     
     // Low pass filter
     std::vector<float> taps = gr_firdes::low_pass(1.0, 96000, 5000.0, 1000.0);
