@@ -1,8 +1,6 @@
 #
 # Copyright 2011 Free Software Foundation, Inc.
 # 
-# This file is part of GNU Radio
-# 
 # GNU Radio is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3, or (at your option)
@@ -21,6 +19,28 @@
 
 include $(top_srcdir)/Makefile.common
 
+# For compiling within the build tree
+#AM_CPPFLAGS = \
+#	-I$(top_srcdir)/lib/ \
+#	$(AM_CPPFLAGS) \
+#	$(STD_DEFINES_AND_INCLUDES) \
+#	$(WITH_INCLUDES)
+
+GR_FCD_LA=$(top_builddir)/lib/libgnuradio-fcd.la
+
+# For compiling outside the tree, these will get fished out by pkgconfig
+LDADD = \
+	$(GR_FCD_LA) \
+	$(GNURADIO_CORE_LA) \
+    $(GNURADIO_AUDIO_LA)
+
+bin_PROGRAMS = \
+	fcd_nfm_rx
+
+fcd_nfm_rx_SOURCES = \
+	fcd_nfm_rx.cc
+
+
 if PYTHON
 # FIXME
 #dist_bin_SCRIPTS = \
@@ -28,7 +48,5 @@ if PYTHON
 
 #EXTRA_DIST = \
 #    fcd_nfm_rx.grc
-
-
 
 endif
