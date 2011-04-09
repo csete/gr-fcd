@@ -40,7 +40,7 @@ _AM_SET_OPTION([tar-ustar])
 AM_INIT_AUTOMAKE(gr-fcd,$RELEASE)
 
 dnl This is kind of non-standard, but it sure shortens up this file :-)
-dnl FIXME: Include gnuradio-audio in GR_ASTANDALONE
+dnl FIXME: Include gnuradio-audio in GR_STANDALONE
 m4_include([config/gr_standalone.m4])
 GR_STANDALONE
 
@@ -79,21 +79,13 @@ dnl AX_BOOST_WSERIALIZATION
 
 AC_CONFIG_FILES([\
 	  Makefile \
-	  setup_guile_test_env \
 	  apps/Makefile \
 	  config/Makefile \
 	  grc/Makefile \
 	  lib/Makefile \
 	  python/Makefile \
 	  swig/Makefile \
-	  swig/run_guile_tests \
 	])
-
-dnl run_tests is created from run_tests.in.  Make it executable.
-AC_CONFIG_COMMANDS([run_tests],
-		   [
-		    chmod +x swig/run_guile_tests
-		   ])
 
 AC_OUTPUT
 

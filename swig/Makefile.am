@@ -22,7 +22,6 @@
 include $(top_srcdir)/Makefile.common
 include $(top_srcdir)/Makefile.swig
 
-noinst_GUILE  = fcd.test
 
 AM_CPPFLAGS += -I$(top_srcdir)/lib 
 
@@ -48,11 +47,3 @@ fcd_swiginclude_headers = \
 
 
 EXTRA_DIST = $(fcd_swiginclude_headers)
-
-if GUILE
-TESTS = run_guile_tests
-nobase_guile_DATA = \
-	gnuradio/fcd_swig.scm
-endif
-
-EXTRA_DIST += $(nobase_guile_DATA)
