@@ -10,3 +10,4 @@
 /run_guile_tests
 *.la
 *.lo
+*.o

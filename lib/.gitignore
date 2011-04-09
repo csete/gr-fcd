@@ -7,6 +7,4 @@
 /*.la
 /*.lo
 /*.pyc
-/fcd.cc
-/fcd.py
-/test_all
+*.o
