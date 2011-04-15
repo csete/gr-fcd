@@ -11,12 +11,14 @@ in GNU Radio application written in C++, Python and the GNU Radio Companion.
 
 This package requires that gnuradio-core and gnuradio-audio 3.4 is already
 installed. It also depends on some GNU Radio prerequisites, such as Boost.
+On Linux you will also need libusb-1.0 for the HID control interface.
 
-To build the examples from the tarball use the normal recipe:
+To build the gnuradio-fcd library and the included examples use the normal
+recipe:
 
   $ ./configure
   $ make
-  $ make check
+  $ sudo make install
 
 If you're building from git, you'll need to use this sequence, since
 git doesn't contain configure or the generated Makefiles.
@@ -24,7 +26,11 @@ git doesn't contain configure or the generated Makefiles.
   $ ./bootstrap
   $ ./configure
   $ make
-  $ make check
+  $ sudo make install
+
+The configure script has many options for fine tuning the build and the
+installation. Use the --help option to get a list.
+
   
 This package was created by Alexandru Csete OZ9AEC, and it is based on the
 gr-howto-write-a-block example package by Eric Blossom and contributors.
