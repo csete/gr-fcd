@@ -43,6 +43,11 @@ dnl This is kind of non-standard, but it sure shortens up this file :-)
 m4_include([config/gr_standalone.m4])
 GR_STANDALONE
 
+dnl Check for libusb-1.0
+PKG_CHECK_MODULES(LIBUSB, libusb-1.0 >= 1.0)
+LIBS="$LIBS $LIBUSB_LIBS"
+CPPFLAGS="$CPPFLAGS $LIBUSB_CPPFLAGS"
+
 dnl Check for any libraries you need
 dnl AC_CHECK_LIBRARY
 
