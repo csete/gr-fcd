@@ -40,10 +40,8 @@ _AM_SET_OPTION([tar-ustar])
 AM_INIT_AUTOMAKE(gnuradio-fcd,$RELEASE)
 
 dnl This is kind of non-standard, but it sure shortens up this file :-)
-dnl FIXME: Include gnuradio-audio in GR_STANDALONE
 m4_include([config/gr_standalone.m4])
 GR_STANDALONE
-
 
 dnl Check for any libraries you need
 dnl AC_CHECK_LIBRARY
