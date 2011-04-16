@@ -28,11 +28,19 @@ include $(top_srcdir)/Makefile.common
 # C/C++ headers get installed in ${prefix}/include/$(modname)
 modinclude_HEADERS = \
     fcd_source_c.h
+    
+#noinst_HEADERS = \
+    fcd.h \
+    fcdhidcmd.h \
+    hidapi.h
 
 lib_LTLIBRARIES = libgnuradio-fcd.la
 
+## FIXME: only linux; mac and win use other hidapi source
 libgnuradio_fcd_la_SOURCES = \
-    fcd_source_c.cc
+    fcd_source_c.cc \
+    fcd.c \
+    hid-libusb.c
 
 libgnuradio_fcd_la_LIBADD = \
     $(GNURADIO_CORE_LA) \
