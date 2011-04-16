@@ -31,7 +31,9 @@ git doesn't contain configure or the generated Makefiles.
 The configure script has many options for fine tuning the build and the
 installation. Use the --help option to get a list.
 
-  
+This package includes the hidapi: http://www.signal11.us/oss/hidapi/
+and the FCD API code from Qthid: http://qthid.sf.net/ 
+ 
 This package was created by Alexandru Csete OZ9AEC, and it is based on the
 gr-howto-write-a-block example package by Eric Blossom and contributors.
 
