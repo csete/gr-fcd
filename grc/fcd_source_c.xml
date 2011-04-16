@@ -4,7 +4,16 @@
     <key>fcd_source_c</key>
     <category>Sources</category>
     <import>import fcd</import>
-    <make>fcd.source_c($device_name)</make>
+    <make>fcd.source_c($device_name)
+#if $freq() > 0
+self.$(id).set_freq($freq)
+#end if
+#if $ppm() > 0
+self.$(id).set_freq_corr($ppm)
+#end if
+    </make>
+    <callback>set_freq($freq)</callback>
+    <callback>set_freq_corr($corr)</callback>
     <param>
         <name>Device Name</name>
         <key>device_name</key>
@@ -12,18 +21,33 @@
         <type>string</type>
         <hide>#if $device_name() then 'none' else 'part'#</hide>
     </param>
-
+    <param>
+        <name>Frequency (Hz)</name>
+        <key>freq</key>
+        <value>0</value>
+        <type>int</type>
+    </param>
+    <param>
+        <name>Correction (ppm)</name>
+        <key>ppm</key>
+        <value>0</value>
+        <type>int</type>
+    </param>
     <source>
       <name>out</name>
       <type>complex</type>
     </source>
     <doc>
-This block wraps the Funcube Dongle USB audio input and the USB
-HID control interface into one convenient GNU Radio source block.
+This block wraps the Funcube Dongle USB audio input and the USB HID control interface \
+into one convenient GNU Radio source block.
 
-The sample rate is fixed at 96ksps.
+The sample rate is fixed at 96 ksps.
 
 To find the device name on Linux type:
    cat /proc/asound/cards
+   
+If you don't kow what value to use for frequency correction, try:
+- For FCD v1.0 you can leave at 0 (block will use default 115)
+- For FCD v1.1 with serial number 810 or greater use 12 ppm
 	</doc>
 </block>

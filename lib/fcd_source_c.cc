@@ -23,6 +23,7 @@
 
 
 #include <fcd_source_c.h>
+#include <fcd.h>
 #include <gr_io_signature.h>
 #include <gr_audio_source.h>
 #include <gr_float_to_complex.h>
@@ -47,7 +48,8 @@ static const int MAX_OUT = 1;	// maximum number of output streams
 fcd_source_c::fcd_source_c(const std::string device_name) 
     : gr_hier_block2 ("fcd_source_c",
                       gr_make_io_signature (MIN_IN, MAX_IN, sizeof (gr_complex)),
-                      gr_make_io_signature (MIN_OUT, MAX_OUT, sizeof (gr_complex)))
+                      gr_make_io_signature (MIN_OUT, MAX_OUT, sizeof (gr_complex))),
+    d_freq_corr(115)
 {
     gr_float_to_complex_sptr f2c;
     
@@ -63,10 +65,38 @@ fcd_source_c::fcd_source_c(const std::string device_name)
 
 }
 
-/*
- * Our virtual destructor.
- */
+
 fcd_source_c::~fcd_source_c ()
 {
 
+}
+
+// Set frequency with Hz resolution
+void fcd_source_c::set_freq(int freq)
+{
+    FCD_MODE_ENUM fme;
+    double f = (double)freq;
+
+    f *= 1.0 + d_freq_corr/1000000.0;
+
+    fme = fcdAppSetFreqkHz((int)(f/1000.0));
+    /* TODO: check fme */
+}
+    
+// Set frequency with kHz resolution.
+void fcd_source_c::set_freq_khz(int freq)
+{
+    FCD_MODE_ENUM fme;
+    double f = freq*1000.0;
+
+    f *= 1.0 + d_freq_corr/1000000.0;
+
+    fme = fcdAppSetFreqkHz((int)(f/1000.0));
+    /* TODO: check fme */
+}
+
+// Set new frequency correction
+void fcd_source_c::set_freq_corr(int ppm)
+{
+    d_freq_corr = ppm;
 }

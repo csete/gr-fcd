@@ -39,6 +39,7 @@ typedef boost::shared_ptr<fcd_source_c> fcd_source_c_sptr;
  */
 fcd_source_c_sptr fcd_make_source_c(const std::string device_name = "");
 
+
 /*!
  * \brief Funcube Dongle source block.
  * \ingroup block
@@ -49,10 +50,42 @@ class fcd_source_c : public gr_hier_block2
 public:
     fcd_source_c(const std::string device_name = ""); // FIXME: should be private
     ~fcd_source_c();
+    
+    //! Set frequency with Hz resolution
+    /*! \param freq The frequency in Hz
+     * 
+     * Set the frequency of the Funcube Dongle with 1 Hz resolution applying
+     * the frequency correction set by set_freq_corr().
+     * 
+     * \see set_freq_kHz()
+     * \todo Need to add Hz resolution to FCD API
+     */
+    void set_freq(int freq);
+    
+    //! Set frequency with kHz resolution.
+    /*! \param freq The frequency in kHz
+     * 
+     * Sets the frequency of the Funcube Dongle with 1 kHz resolution
+     * applying the frequency correction set by set_freq_corr().
+     * 
+     * \see set_freq()
+     */
+    void set_freq_khz(int freq);
+
+    //! Set new frequency correction
+    /*! \param ppm The new frequency correction in parts per million
+     * 
+     * Version 1.1 FCDs (S/N 810 or later) need a correction of -12ppm.
+     * Earlier FCDs need roughly -115ppm (default for gr-fcd).
+     * 
+     * Ref: http://www.funcubedongle.com/?p=617
+     */
+    void set_freq_corr(int ppm);
 
 private:
-    audio_source::sptr fcd;  /*!< The audio input source */
 
+    audio_source::sptr fcd;  /*!< The audio input source */
+    int d_freq_corr;       /*!< The frequency correction in ppm */
 };
 
 #endif /* INCLUDED_FCD_SOURCE_C_H */
