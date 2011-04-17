@@ -64,14 +64,14 @@ dnl If you need additional boost libraries, you'll need to
 dnl uncomment AX_BOOST_BASE, plus some of the following:
 dnl
 dnl calls AC_SUBST(BOOST_CPPFLAGS), AC_SUBST(BOOST_LDFLAGS) and defines HAVE_BOOST
-dnl AX_BOOST_BASE([1.35])
+AX_BOOST_BASE([1.35])
 dnl
 dnl All the rest of these call AC_SUBST(BOOST_<foo>_LIB) and define HAVE_BOOST_<foo>
 dnl
 dnl AX_BOOST_DATE_TIME
 dnl AX_BOOST_FILESYSTEM
 dnl AX_BOOST_IOSTREAMS
-dnl AX_BOOST_PROGRAM_OPTIONS
+AX_BOOST_PROGRAM_OPTIONS
 dnl AX_BOOST_REGEX
 dnl AX_BOOST_SERIALIZATION
 dnl AX_BOOST_SIGNALS

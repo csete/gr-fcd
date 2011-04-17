@@ -32,7 +32,8 @@ GR_FCD_LA=$(top_builddir)/lib/libgnuradio-fcd.la
 LDADD = \
 	$(GR_FCD_LA) \
 	$(GNURADIO_CORE_LA) \
-    $(GNURADIO_AUDIO_LA)
+    $(GNURADIO_AUDIO_LA) \
+    $(BOOST_PROGRAM_OPTIONS_LIB)
 
 bin_PROGRAMS = \
 	fcd_nfm_rx
