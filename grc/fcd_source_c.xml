@@ -35,7 +35,7 @@ self.$(id).set_iq_corr($iq_phase,$iq_gain)
         <name>Frequency (Hz)</name>
         <key>freq</key>
         <value>145500000</value>
-        <type>int</type>
+        <type>real</type>
     </param>
     <param>
         <name>LNA Gain (dB)</name>

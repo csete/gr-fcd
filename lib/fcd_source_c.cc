@@ -88,6 +88,24 @@ void fcd_source_c::set_freq(int freq)
     fme = fcdAppSetFreqkHz((int)(f/1000.0));
     /* TODO: check fme */
 }
+
+// Set frequency with Hz resolution (type float)
+void fcd_source_c::set_freq(float freq)
+{
+    FCD_MODE_ENUM fme;
+    double f = (double)freq;
+    
+    /* valid range 50 MHz - 2.0 GHz */
+    if ((freq < 50.0e6) || (freq > 2.0e9)) {
+        return;
+    }
+
+    f *= 1.0 + d_freq_corr/1000000.0;
+
+    fme = fcdAppSetFreqkHz((int)(f/1000.0));
+    /* TODO: check fme */
+}
+
     
 // Set frequency with kHz resolution.
 void fcd_source_c::set_freq_khz(int freq)

@@ -66,6 +66,15 @@ public:
      * \todo Need to add Hz resolution to FCD API
      */
     void set_freq(int freq);
+
+    /*! \brief Set frequency with Hz resolution.
+     *  \param freq The frequency in Hz
+     * 
+     * This is a convenience function that uses float parameter in order to allow
+     * using engineering notation in GRC.
+     * 
+     */
+    void set_freq(float freq);
     
     /*! \brief Set frequency with kHz resolution.
      *  \param freq The frequency in kHz

@@ -16,6 +16,7 @@ public:
   ~fcd_source_c();
   
   void set_freq(int freq);
+  void set_freq(float freq);
   void set_freq_khz(int freq);
   void set_lna_gain(float gain);
   void set_freq_corr(int ppm);
