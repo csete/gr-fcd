@@ -42,8 +42,12 @@ fcd_source_c_sptr fcd_make_source_c(const std::string device_name = "");
 /*! \brief Funcube Dongle source block.
  * 
  * This class provides a Funcube Dongle soure block by wrapping the
- * USB audio interface and the USG HID control interface of the Funcube
+ * USB audio interface and the USB HID control interface of the Funcube
  * Dongle into one convenient source block.
+ * 
+ * The Funcube Dongle needs to have firmware 18f or later for the control
+ * interface to work properly. As of early 2011, FCDs still come with firmware
+ * 18b. You can use qthid 2.2 (not 3) to upgrade the firmware: http://qthid.sf.net
  */
 class fcd_source_c : public gr_hier_block2
 {
