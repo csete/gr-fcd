@@ -33,29 +33,27 @@ typedef boost::shared_ptr<fcd_source_c> fcd_source_c_sptr;
 /*!
  * \brief Return a shared_ptr to a new instance of fcd_source_c.
  *
- * To avoid accidental use of raw pointers, howto_square2_ff's
- * constructor is private.  howto_make_square2_ff is the public
- * interface for creating new instances.
+ * This is effectively the public constructor. To avoid accidental use
+ * of raw pointers, fcd_source_c's constructor is private.
+ * fcd_make_source_c is the public interface for creating new instances.
  */
 fcd_source_c_sptr fcd_make_source_c(const std::string device_name = "");
 
-//! Funcube Dongle source block.
-/*! \ingroup block
+/*! \brief Funcube Dongle source block.
  * 
  * This class provides a Funcube Dongle soure block by wrapping the
  * USB audio interface and the USG HID control interface of the Funcube
  * Dongle into one convenient source block.
- * 
  */
 class fcd_source_c : public gr_hier_block2
 {
 
 public:
-    fcd_source_c(const std::string device_name = ""); // FIXME: could be private
+    fcd_source_c(const std::string device_name = ""); // FIXME: should be private
     ~fcd_source_c();
     
-    //! Set frequency with Hz resolution.
-    /*! \param freq The frequency in Hz
+    /*! \brief Set frequency with Hz resolution.
+     *  \param freq The frequency in Hz
      * 
      * Set the frequency of the Funcube Dongle with 1 Hz resolution applying
      * the frequency correction set by set_freq_corr().
@@ -65,8 +63,8 @@ public:
      */
     void set_freq(int freq);
     
-    //! Set frequency with kHz resolution.
-    /*! \param freq The frequency in kHz
+    /*! \brief Set frequency with kHz resolution.
+     *  \param freq The frequency in kHz
      * 
      * Sets the frequency of the Funcube Dongle with 1 kHz resolution
      * applying the frequency correction set by set_freq_corr().
@@ -75,8 +73,8 @@ public:
      */
     void set_freq_khz(int freq);
 
-    //! Set new frequency correction.
-    /*! \param ppm The new frequency correction in parts per million
+    /*! \brief Set new frequency correction.
+     *  \param ppm The new frequency correction in parts per million
      * 
      * Version 1.1 FCDs (S/N 810 or later) need a correction of -12ppm.
      * Earlier FCDs need roughly -115ppm (default for gr-fcd).
@@ -85,16 +83,16 @@ public:
      */
     void set_freq_corr(int ppm);
     
-    //! Set DC offset correction.
-    /*! \param dci DC correction for I component (-1.0 to 1.0)
+    /*! \brief Set DC offset correction.
+     *  \param dci DC correction for I component (-1.0 to 1.0)
      *  \param dcq DC correction for Q component (-1.0 to 1.0)
      * 
      * Set DC offset correction in the device. Default is 1.0.
      */
     void set_dc_corr(double dci, double dcq);
     
-    //! Set IQ phase and gain balance.
-    /*! \param gain The gain correction (-1.0 to 1.0)
+    /*! \brief Set IQ phase and gain balance.
+     *  \param gain The gain correction (-1.0 to 1.0)
      *  \param phase The phase correction (-1.0 to 1.0)
      * 
      * Set IQ phase and gain balance in the device. The default values

@@ -40,10 +40,10 @@ fcd_source_c_sptr fcd_make_source_c(const std::string device_name)
 }
 
 
-static const int MIN_IN = 0;	// mininum number of input streams
-static const int MAX_IN = 0;	// maximum number of input streams
-static const int MIN_OUT = 1;	// minimum number of output streams
-static const int MAX_OUT = 1;	// maximum number of output streams
+static const int MIN_IN = 0;  /*!< Mininum number of input streams. */
+static const int MAX_IN = 0;  /*!< Maximum number of input streams. */
+static const int MIN_OUT = 1; /*!< Minimum number of output streams. */
+static const int MAX_OUT = 1; /*!< Maximum number of output streams. */
 
 
 fcd_source_c::fcd_source_c(const std::string device_name) 
