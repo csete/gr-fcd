@@ -16,4 +16,5 @@ libtool
 setup_guile_test_env
 stamp-h1
 gnuradio-fcd.pc
+config.h.in~
 
