@@ -76,6 +76,19 @@ public:
      * \see set_freq()
      */
     void set_freq_khz(int freq);
+    
+    /*! \brief Set LNA gain.
+     *  \param gain The new gain in dB.
+     * 
+     * Set the LNA gain in the FCD. Valid range is -5 to 30. Although
+     * the LNA gain in the FCD takes enumerated values corresponding to
+     * 2.5 dB steps, you can can call this method with any float value
+     * and it will be rounded to the nearest valid value.
+     * 
+     * By default the FCD is set to 20 dB and this is a good value for most
+     * cases. In noisy areas you may try to reduce the gain.
+     */
+    void set_lna_gain(float gain);
 
     /*! \brief Set new frequency correction.
      *  \param ppm The new frequency correction in parts per million

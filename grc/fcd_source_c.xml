@@ -8,6 +8,9 @@
 #if $freq() > 0
 self.$(id).set_freq($freq)
 #end if
+#if $lna() != 20.0
+self.$(id).set_lna_gain($lna)
+#end if
 #if $ppm() != 115
 self.$(id).set_freq_corr($ppm)
 #end if
@@ -19,6 +22,7 @@ self.$(id).set_iq_corr($phase,$gain)
 #end if
     </make>
     <callback>set_freq($freq)</callback>
+    <callback>set_lna_gain($lna)</callback>
     <callback>set_freq_corr($ppm)</callback>
     <callback>set_dc_corr($dci,$dcq)</callback>
     <callback>set_iq_corr($phase,$gain)</callback>
@@ -34,6 +38,12 @@ self.$(id).set_iq_corr($phase,$gain)
         <key>freq</key>
         <value>0</value>
         <type>int</type>
+    </param>
+    <param>
+        <name>LNA Gain (dB)</name>
+        <key>lna</key>
+        <value>20.0</value>
+        <type>real</type>
     </param>
     <param>
         <name>Frequency corr. (ppm)</name>
@@ -77,10 +87,13 @@ The sample rate is fixed at 96 ksps.
 
 To find the device name on Linux type:
    cat /proc/asound/cards
+
+The LNA gain is a set of discrete values between -5 to 30 dB with 2.5 dB step, but you can \
+use any float value and it will be rounded to the nearest valid value.
    
-If you don't kow what value to use for frequency correction, try:
-- For FCD v1.0 you can leave at 115
-- For FCD v1.1 with serial number 810 or greater use 12 ppm
+The FCD block can autmatically apply frequency correction:
+  - For FCD v1.0 you can leave at 115 ppm
+  - For FCD v1.1 with serial number 810 or greater use 12 ppm
 
 The DC offset and IQ balance parameters can have range -1.0 to 1.0.
 	</doc>

@@ -96,6 +96,58 @@ void fcd_source_c::set_freq_khz(int freq)
     /* TODO: check fme */
 }
 
+
+// Set LNA gain
+void fcd_source_c::set_lna_gain(float gain)
+{
+    FCD_MODE_ENUM fme;
+    unsigned char g;
+    
+    /* convert to nearest discrete value */
+    if (gain > 27.5) {
+        g = 14;              // 30.0 dB
+    }
+    else if (gain > 22.5) {
+        g = 13;              // 25.0 dB
+    }
+    else if (gain > 18.75) {
+        g = 12;              // 20.0 dB
+    }
+    else if (gain > 16.25) {
+        g = 11;              // 17.5 dB
+    }
+    else if (gain > 13.75) {
+        g = 10;              // 15.0 dB
+    }
+    else if (gain > 11.25) {
+        g = 9;               // 12.5 dB
+    }
+    else if (gain > 8.75) {
+        g = 8;               // 10.0 dB
+    }
+    else if (gain > 6.25) {
+        g = 7;               // 7.5 dB
+    }
+    else if (gain > 3.75) {
+        g = 6;               // 5.0 dB
+    }
+    else if (gain > 1.25) {
+        g = 5;               // 2.5 dB
+    }
+    else if (gain > -1.25) {
+        g = 4;               // 0.0 dB
+    }
+    else if (gain > -3.75) {
+        g = 1;               // -2.5 dB
+    }
+    else {
+        g = 0;               // -5.0 dB
+    }
+    
+    fme = fcdAppSetParam(FCD_CMD_APP_SET_LNA_GAIN, &g, 1);
+    /* TODO: check fme */
+}
+
 // Set new frequency correction
 void fcd_source_c::set_freq_corr(int ppm)
 {
