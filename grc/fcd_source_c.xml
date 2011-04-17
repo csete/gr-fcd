@@ -5,9 +5,7 @@
     <category>Sources</category>
     <import>import fcd</import>
     <make>fcd.source_c($device_name)
-#if $freq() > 0
 self.$(id).set_freq($freq)
-#end if
 #if $lna() != 20.0
 self.$(id).set_lna_gain($lna)
 #end if
@@ -17,15 +15,15 @@ self.$(id).set_freq_corr($ppm)
 #if ($dci() != 1.0) or ($dcq() != 1.0)
 self.$(id).set_dc_corr($dci,$dcq)
 #end if
-#if ($phase() != 0.0) or ($gain() != 1.0)
-self.$(id).set_iq_corr($phase,$gain)
+#if ($iq_phase() != 0.0) or ($iq_gain() != 1.0)
+self.$(id).set_iq_corr($iq_phase,$iq_gain)
 #end if
     </make>
     <callback>set_freq($freq)</callback>
     <callback>set_lna_gain($lna)</callback>
     <callback>set_freq_corr($ppm)</callback>
     <callback>set_dc_corr($dci,$dcq)</callback>
-    <callback>set_iq_corr($phase,$gain)</callback>
+    <callback>set_iq_corr($iq_phase,$iq_gain)</callback>
     <param>
         <name>Device Name</name>
         <key>device_name</key>
@@ -36,7 +34,7 @@ self.$(id).set_iq_corr($phase,$gain)
     <param>
         <name>Frequency (Hz)</name>
         <key>freq</key>
-        <value>0</value>
+        <value>145500000</value>
         <type>int</type>
     </param>
     <param>
@@ -65,16 +63,21 @@ self.$(id).set_iq_corr($phase,$gain)
     </param>
     <param>
         <name>IQ phase balance</name>
-        <key>phase</key>
+        <key>iq_phase</key>
         <value>0.0</value>
         <type>real</type>
     </param>
     <param>
         <name>IQ gain balance</name>
-        <key>gain</key>
+        <key>iq_gain</key>
         <value>1.0</value>
         <type>real</type>
     </param>
+    <check>($freq &gt;= 50e6) and ($freq &lt;= 2e9)</check>
+    <check>($dci &gt;= -1.0) and ($dci &lt;= 1.0)</check>
+    <check>($dcq &gt;= -1.0) and ($dcq &lt;= 1.0)</check>
+    <check>($iq_phase &gt;= -1.0) and ($iq_phase &lt;= 1.0)</check>
+    <check>($iq_gain &gt;= -1.0) and ($iq_gain &lt;= 1.0)</check>
     <source>
       <name>out</name>
       <type>complex</type>
