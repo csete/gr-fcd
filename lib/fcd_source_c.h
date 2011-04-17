@@ -39,19 +39,22 @@ typedef boost::shared_ptr<fcd_source_c> fcd_source_c_sptr;
  */
 fcd_source_c_sptr fcd_make_source_c(const std::string device_name = "");
 
-
-/*!
- * \brief Funcube Dongle source block.
- * \ingroup block
+//! Funcube Dongle source block.
+/*! \ingroup block
+ * 
+ * This class provides a Funcube Dongle soure block by wrapping the
+ * USB audio interface and the USG HID control interface of the Funcube
+ * Dongle into one convenient source block.
+ * 
  */
 class fcd_source_c : public gr_hier_block2
 {
 
 public:
-    fcd_source_c(const std::string device_name = ""); // FIXME: should be private
+    fcd_source_c(const std::string device_name = ""); // FIXME: could be private
     ~fcd_source_c();
     
-    //! Set frequency with Hz resolution
+    //! Set frequency with Hz resolution.
     /*! \param freq The frequency in Hz
      * 
      * Set the frequency of the Funcube Dongle with 1 Hz resolution applying
@@ -72,7 +75,7 @@ public:
      */
     void set_freq_khz(int freq);
 
-    //! Set new frequency correction
+    //! Set new frequency correction.
     /*! \param ppm The new frequency correction in parts per million
      * 
      * Version 1.1 FCDs (S/N 810 or later) need a correction of -12ppm.
@@ -81,11 +84,28 @@ public:
      * Ref: http://www.funcubedongle.com/?p=617
      */
     void set_freq_corr(int ppm);
+    
+    //! Set DC offset correction.
+    /*! \param dci DC correction for I component (-1.0 to 1.0)
+     *  \param dcq DC correction for Q component (-1.0 to 1.0)
+     * 
+     * Set DC offset correction in the device. Default is 1.0.
+     */
+    void set_dc_corr(double dci, double dcq);
+    
+    //! Set IQ phase and gain balance.
+    /*! \param gain The gain correction (-1.0 to 1.0)
+     *  \param phase The phase correction (-1.0 to 1.0)
+     * 
+     * Set IQ phase and gain balance in the device. The default values
+     * are 0.0 for phase and 1.0 for gain.
+     */
+    void set_iq_corr(double gain, double phase);
 
 private:
 
     audio_source::sptr fcd;  /*!< The audio input source */
-    int d_freq_corr;       /*!< The frequency correction in ppm */
+    int d_freq_corr;         /*!< The frequency correction in ppm */
 };
 
 #endif /* INCLUDED_FCD_SOURCE_C_H */

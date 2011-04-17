@@ -8,12 +8,20 @@
 #if $freq() > 0
 self.$(id).set_freq($freq)
 #end if
-#if $ppm() > 0
+#if $ppm() != 115
 self.$(id).set_freq_corr($ppm)
+#end if
+#if ($dci() != 1.0) or ($dcq() != 1.0)
+self.$(id).set_dc_corr($dci,$dcq)
+#end if
+#if ($phase() != 0.0) or ($gain() != 1.0)
+self.$(id).set_iq_corr($phase,$gain)
 #end if
     </make>
     <callback>set_freq($freq)</callback>
-    <callback>set_freq_corr($corr)</callback>
+    <callback>set_freq_corr($ppm)</callback>
+    <callback>set_dc_corr($dci,$dcq)</callback>
+    <callback>set_iq_corr($phase,$gain)</callback>
     <param>
         <name>Device Name</name>
         <key>device_name</key>
@@ -28,10 +36,34 @@ self.$(id).set_freq_corr($ppm)
         <type>int</type>
     </param>
     <param>
-        <name>Correction (ppm)</name>
+        <name>Frequency corr. (ppm)</name>
         <key>ppm</key>
-        <value>0</value>
+        <value>115</value>
         <type>int</type>
+    </param>
+    <param>
+        <name>DC I offset</name>
+        <key>dci</key>
+        <value>1.0</value>
+        <type>real</type>
+    </param>
+    <param>
+        <name>DC Q offset</name>
+        <key>dcq</key>
+        <value>1.0</value>
+        <type>real</type>
+    </param>
+    <param>
+        <name>IQ phase balance</name>
+        <key>phase</key>
+        <value>0.0</value>
+        <type>real</type>
+    </param>
+    <param>
+        <name>IQ gain balance</name>
+        <key>gain</key>
+        <value>1.0</value>
+        <type>real</type>
     </param>
     <source>
       <name>out</name>
@@ -47,7 +79,9 @@ To find the device name on Linux type:
    cat /proc/asound/cards
    
 If you don't kow what value to use for frequency correction, try:
-- For FCD v1.0 you can leave at 0 (block will use default 115)
+- For FCD v1.0 you can leave at 115
 - For FCD v1.1 with serial number 810 or greater use 12 ppm
+
+The DC offset and IQ balance parameters can have range -1.0 to 1.0.
 	</doc>
 </block>

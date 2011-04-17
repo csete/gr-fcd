@@ -24,6 +24,7 @@
 
 #include <fcd_source_c.h>
 #include <fcd.h>
+#include <fcdhidcmd.h> // needed for extended API
 #include <gr_io_signature.h>
 #include <gr_audio_source.h>
 #include <gr_float_to_complex.h>
@@ -99,4 +100,48 @@ void fcd_source_c::set_freq_khz(int freq)
 void fcd_source_c::set_freq_corr(int ppm)
 {
     d_freq_corr = ppm;
+}
+
+
+// Set DC offset correction.
+void fcd_source_c::set_dc_corr(double dci, double dcq)
+{
+    union {
+        unsigned char auc[4];
+        struct {
+            signed short dci;  // equivalent of qint16 which should be 16 bit everywhere
+            signed short dcq;
+        };
+    } dcinfo;
+
+    if ((dci < -1.0) || (dci > 1.0) || (dcq < -1.0) || (dcq > 1.0))
+        return;
+
+    dcinfo.dci = static_cast<signed short>(dci*32768.0);
+    dcinfo.dcq = static_cast<signed short>(dcq*32768.0);
+
+    fcdAppSetParam(FCD_CMD_APP_SET_DC_CORR, dcinfo.auc, 4);
+
+}
+
+
+// Set IQ phase and gain balance.
+void fcd_source_c::set_iq_corr(double gain, double phase)
+{
+    union {
+        unsigned char auc[4];
+        struct {
+            signed short phase;
+            signed short gain;
+        };
+    } iqinfo;
+
+    if ((gain < -1.0) || (gain > 1.0) || (phase < -1.0) or (phase > 1.0))
+        return;
+
+    iqinfo.phase = static_cast<signed short>(phase*32768.0);
+    iqinfo.gain = static_cast<signed short>(gain*32768.0);
+
+    fcdAppSetParam(FCD_CMD_APP_SET_IQ_CORR, iqinfo.auc, 4);
+
 }
