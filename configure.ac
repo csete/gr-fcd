@@ -80,6 +80,10 @@ dnl AX_BOOST_TEST_EXEC_MONITOR
 dnl AX_BOOST_UNIT_TEST_FRAMEWORK
 dnl AX_BOOST_WSERIALIZATION
 
+dnl Doxygen used to create API docs
+GR_CHECK_DOXYGEN
+
+
 AC_CONFIG_FILES([\
 	  Makefile \
       gnuradio-fcd.pc \
@@ -89,6 +93,8 @@ AC_CONFIG_FILES([\
 	  lib/Makefile \
 	  python/Makefile \
 	  swig/Makefile \
+      doc/Makefile \
+      doc/Doxyfile \
 	])
 
 AC_OUTPUT

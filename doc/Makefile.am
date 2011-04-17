@@ -1,7 +1,5 @@
 #
-# Copyright 2004,2008,2009 Free Software Foundation, Inc.
-# 
-# This file is part of GNU Radio
+# Copyright 2001,2005,2009 Free Software Foundation, Inc.
 # 
 # GNU Radio is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,23 +17,32 @@
 # Boston, MA 02110-1301, USA.
 # 
 
-ACLOCAL_AMFLAGS = -I config
-
 include $(top_srcdir)/Makefile.common
 
-EXTRA_DIST = \
-	bootstrap \
-	configure \
-	config.h.in \
-	Makefile.swig \
-	Makefile.swig.gen.t \
-	version.sh \
-	README \
-	README.hacking
 
-SUBDIRS = config lib swig python grc apps doc
+dist_gr_fcd_doc_DATA =			\
+	$(top_srcdir)/README		\
+	$(top_srcdir)/README.hacking
 
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = gnuradio-fcd.pc
+all-local: prep @generate_docs@
+doc: docs            # alias
 
-DISTCLEANFILES += gnuradio-fcd*.tar.gz
+docs: prep html/index.html
+html/index.html:
+	@DOXYGEN@
+
+prep:
+	$(MKDIR_P) html
+	$(MKDIR_P) xml
+
+install-data-local:
+	$(MKDIR_P) $(DESTDIR)$(gr_fcd_docdir)
+	cp -r html $(DESTDIR)$(gr_fcd_docdir)
+	cp -r xml $(DESTDIR)$(gr_fcd_docdir)
+
+uninstall-local:
+	$(RM) -fr $(DESTDIR)$(gr_fcd_docdir)/html
+	$(RM) -fr $(DESTDIR)$(gr_fcd_docdir)/xml
+
+clean-local:
+	$(RM) -fr latex html man xml

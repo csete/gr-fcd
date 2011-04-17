@@ -73,6 +73,10 @@ swigincludedir = $(modincludedir)/swig
 modpythondir = $(pythondir)/$(modname)
 modpyexecdir = $(pyexecdir)/$(modname)
 
+# Base directory for documentation (docdir undefined in autoconf < 1.60)
+docdir ?= $(datadir)/doc/$(PACKAGE)
+gr_fcd_docdir = $(docdir)-$(DOCVER)
+
 # Data directory for grc block wrappers
 grc_blocksdir = $(prefix)/share/gnuradio/grc/blocks
 
