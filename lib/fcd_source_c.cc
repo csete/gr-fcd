@@ -77,6 +77,11 @@ void fcd_source_c::set_freq(int freq)
 {
     FCD_MODE_ENUM fme;
     double f = (double)freq;
+    
+    /* valid range 50 MHz - 2.0 GHz */
+    if ((freq < 50000000) || (freq > 2000000000)) {
+        return;
+    }
 
     f *= 1.0 + d_freq_corr/1000000.0;
 
@@ -89,6 +94,11 @@ void fcd_source_c::set_freq_khz(int freq)
 {
     FCD_MODE_ENUM fme;
     double f = freq*1000.0;
+
+    /* valid range 50 MHz - 2.0 GHz */
+    if ((freq < 50000) || (freq > 2000000)) {
+        return;
+    }
 
     f *= 1.0 + d_freq_corr/1000000.0;
 
