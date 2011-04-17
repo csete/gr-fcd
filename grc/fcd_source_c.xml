@@ -46,7 +46,7 @@ self.$(id).set_iq_corr($iq_phase,$iq_gain)
     <param>
         <name>Frequency corr. (ppm)</name>
         <key>ppm</key>
-        <value>115</value>
+        <value>-120</value>
         <type>int</type>
     </param>
     <param>
@@ -95,8 +95,8 @@ The LNA gain is a set of discrete values between -5 to 30 dB with 2.5 dB step, b
 use any float value and it will be rounded to the nearest valid value.
    
 The FCD block can autmatically apply frequency correction:
-  - For FCD v1.0 you can leave at 115 ppm
-  - For FCD v1.1 with serial number 810 or greater use 12 ppm
+  - For FCD v1.0 you can leave at -120 ppm
+  - For FCD v1.1 with serial number 810 or greater use -12 ppm
 
 The DC offset and IQ balance parameters can have range -1.0 to 1.0.
 	</doc>

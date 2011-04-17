@@ -50,7 +50,7 @@ fcd_source_c::fcd_source_c(const std::string device_name)
     : gr_hier_block2 ("fcd_source_c",
                       gr_make_io_signature (MIN_IN, MAX_IN, sizeof (gr_complex)),
                       gr_make_io_signature (MIN_OUT, MAX_OUT, sizeof (gr_complex))),
-    d_freq_corr(115)
+    d_freq_corr(-120)
 {
     gr_float_to_complex_sptr f2c;
     

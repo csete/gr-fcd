@@ -102,8 +102,8 @@ public:
     /*! \brief Set new frequency correction.
      *  \param ppm The new frequency correction in parts per million
      * 
-     * Version 1.1 FCDs (S/N 810 or later) need a correction of -12ppm.
-     * Earlier FCDs need roughly -115ppm (default for gr-fcd).
+     * Version 1.1 FCDs (S/N 810 or later) need a correction of -12 ppm.
+     * Earlier FCDs need roughly -120 ppm (default for gr-fcd).
      * 
      * Ref: http://www.funcubedongle.com/?p=617
      */
