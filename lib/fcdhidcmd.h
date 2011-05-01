@@ -34,7 +34,7 @@
 
 /* Commands applicable in application mode */
 #define FCD_CMD_APP_SET_FREQ_KHZ     100 /*!< Send with 3 byte unsigned little endian frequency in kHz. */
-#define FCD_CMD_APP_SET_FREQ_HZ      101 /*!< Send with 4 byte unsigned little endian frequency in Hz, returns wit actual frequency set in Hz */
+#define FCD_CMD_APP_SET_FREQ_HZ      101 /*!< Send with 4 byte unsigned little endian frequency in Hz, returns with actual frequency set in Hz */
 #define FCD_CMD_APP_GET_FREQ_HZ      102 /*!< Returns 4 byte unsigned little endian frequency in Hz. */
 
 #define FCD_CMD_APP_GET_IF_RSSI      104 /*!< Supposed to return 1 byte unsigned IF RSSI (-35dBm=0, -10dBm=70) but it is not functional. */
