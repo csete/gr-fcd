@@ -85,7 +85,7 @@ void fcd_source_c::set_freq(int freq)
 
     f *= 1.0 + d_freq_corr/1000000.0;
 
-    fme = fcdAppSetFreqkHz((int)(f/1000.0));
+    fme = fcdAppSetFreq((int)f);
     /* TODO: check fme */
 }
 
@@ -102,7 +102,7 @@ void fcd_source_c::set_freq(float freq)
 
     f *= 1.0 + d_freq_corr/1000000.0;
 
-    fme = fcdAppSetFreqkHz((int)(f/1000.0));
+    fme = fcdAppSetFreq((int)f);
     /* TODO: check fme */
 }
 

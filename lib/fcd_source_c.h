@@ -62,8 +62,7 @@ public:
      * Set the frequency of the Funcube Dongle with 1 Hz resolution applying
      * the frequency correction set by set_freq_corr().
      * 
-     * \see set_freq_kHz()
-     * \todo Need to add Hz resolution to FCD API
+     * \see set_freq_khz()
      */
     void set_freq(int freq);
 
@@ -73,6 +72,7 @@ public:
      * This is a convenience function that uses float parameter in order to allow
      * using engineering notation in GRC.
      * 
+     * \see set_freq_khz()
      */
     void set_freq(float freq);
     

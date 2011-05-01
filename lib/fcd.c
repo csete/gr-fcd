@@ -397,7 +397,7 @@ EXTERN FCD_API_EXPORT FCD_API_CALL FCD_MODE_ENUM fcdAppReset(void)
   * \return The FCD mode.
   *
   * This function sets the frequency of the FCD with 1 kHz resolution. The parameter
-  * nFreq must already contain any necessary frequency corrention.
+  * nFreq must already contain any necessary frequency correction.
   *
   * \sa fcdAppSetFreq
   */
@@ -437,6 +437,55 @@ EXTERN FCD_API_EXPORT FCD_API_CALL FCD_MODE_ENUM fcdAppSetFreqkHz(int nFreq)
 
     return FCD_MODE_BL;
 }
+
+
+/** \brief Set FCD frequency with Hz resolution.
+  * \param nFreq The new frequency in Hz.
+  * \return The FCD mode.
+  *
+  * This function sets the frequency of the FCD with 1 Hz resolution. The parameter
+  * nFreq must already contain any necessary frequency correction.
+  *
+  * \sa fcdAppSetFreq
+  */
+EXTERN FCD_API_EXPORT FCD_API_CALL FCD_MODE_ENUM fcdAppSetFreq(int nFreq)
+{
+    hid_device *phd=NULL;
+    unsigned char aucBufIn[65];
+    unsigned char aucBufOut[65];
+
+    phd = fcdOpen();
+
+    if (phd == NULL)
+    {
+        return FCD_MODE_NONE;
+    }
+
+    // Send an App reset command
+    aucBufOut[0] = 0; // Report ID, ignored
+    aucBufOut[1] = FCD_CMD_APP_SET_FREQ_HZ;
+    aucBufOut[2] = (unsigned char)nFreq;
+    aucBufOut[3] = (unsigned char)(nFreq>>8);
+    aucBufOut[4] = (unsigned char)(nFreq>>16);
+    aucBufOut[5] = (unsigned char)(nFreq>>24);
+    hid_write(phd, aucBufOut, 65);
+    memset(aucBufIn, 0xCC, 65); // Clear out the response buffer
+    hid_read(phd, aucBufIn, 65);
+
+    if (aucBufIn[0]==FCD_CMD_APP_SET_FREQ_HZ && aucBufIn[1]==1)
+    {
+        fcdClose(phd);
+        phd = NULL;
+
+        return FCD_MODE_APP;
+    }
+
+    fcdClose(phd);
+    phd = NULL;
+
+    return FCD_MODE_BL;
+}
+
 
 
 /** \brief Reset FCD to application mode.
