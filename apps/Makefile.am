@@ -49,7 +49,7 @@ if PYTHON
 
 EXTRA_DIST = \
     fcd_fft_wx.grc \
-    fcd_apt_rx.grc
-#    fcd_nfm_rx.grc
+    fcd_apt_rx.grc \
+    fcd_nfm_rx.grc
 
 endif
