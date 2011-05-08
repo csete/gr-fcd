@@ -202,8 +202,6 @@ void fcd_source_c::set_dc_corr(double _dci, double _dcq)
     dcinfo.dci = static_cast<signed short>(_dci*32768.0);
     dcinfo.dcq = static_cast<signed short>(_dcq*32768.0);
 
-    cout << "DCI: " << dcinfo.dci << "  DCQ: " << dcinfo.dcq << endl;
-
     fcdAppSetParam(FCD_CMD_APP_SET_DC_CORR, dcinfo.auc, 4);
 
 }
@@ -225,8 +223,6 @@ void fcd_source_c::set_iq_corr(double _gain, double _phase)
 
     iqinfo.phase = static_cast<signed short>(_phase*32768.0);
     iqinfo.gain = static_cast<signed short>(_gain*32768.0);
-
-    cout << "IQ Ph: " << iqinfo.phase << "  IQ G: " << iqinfo.gain << endl;
 
     fcdAppSetParam(FCD_CMD_APP_SET_IQ_CORR, iqinfo.auc, 4);
 
