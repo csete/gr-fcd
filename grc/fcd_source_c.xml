@@ -23,7 +23,7 @@ self.$(id).set_iq_corr($iq_phase,$iq_gain)
     <callback>set_lna_gain($lna)</callback>
     <callback>set_freq_corr($ppm)</callback>
     <callback>set_dc_corr($dci,$dcq)</callback>
-    <callback>set_iq_corr($iq_phase,$iq_gain)</callback>
+    <callback>set_iq_corr($iq_gain,$iq_phase)</callback>
     <param>
         <name>Device Name</name>
         <key>device_name</key>
