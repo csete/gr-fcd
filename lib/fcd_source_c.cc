@@ -29,8 +29,8 @@
 #include <gr_audio_source.h>
 #include <gr_float_to_complex.h>
 
-#include <iostream>
-using namespace std;
+//#include <iostream>
+//using namespace std;
 
 /*
  * Create a new instance of fcd_source_c and return
