@@ -115,7 +115,7 @@ public:
      * 
      * Set DC offset correction in the device. Default is 1.0.
      */
-    void set_dc_corr(double dci, double dcq);
+    void set_dc_corr(double _dci, double _dcq);
     
     /*! \brief Set IQ phase and gain balance.
      *  \param gain The gain correction (-1.0 to 1.0)
@@ -124,7 +124,7 @@ public:
      * Set IQ phase and gain balance in the device. The default values
      * are 0.0 for phase and 1.0 for gain.
      */
-    void set_iq_corr(double gain, double phase);
+    void set_iq_corr(double _gain, double _phase);
 
 private:
 

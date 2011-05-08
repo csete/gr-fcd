@@ -29,6 +29,8 @@
 #include <gr_audio_source.h>
 #include <gr_float_to_complex.h>
 
+#include <iostream>
+using namespace std;
 
 /*
  * Create a new instance of fcd_source_c and return
@@ -184,7 +186,7 @@ void fcd_source_c::set_freq_corr(int ppm)
 
 
 // Set DC offset correction.
-void fcd_source_c::set_dc_corr(double dci, double dcq)
+void fcd_source_c::set_dc_corr(double _dci, double _dcq)
 {
     union {
         unsigned char auc[4];
@@ -194,11 +196,13 @@ void fcd_source_c::set_dc_corr(double dci, double dcq)
         };
     } dcinfo;
 
-    if ((dci < -1.0) || (dci > 1.0) || (dcq < -1.0) || (dcq > 1.0))
+    if ((_dci < -1.0) || (_dci > 1.0) || (_dcq < -1.0) || (_dcq > 1.0))
         return;
 
-    dcinfo.dci = static_cast<signed short>(dci*32768.0);
-    dcinfo.dcq = static_cast<signed short>(dcq*32768.0);
+    dcinfo.dci = static_cast<signed short>(_dci*32768.0);
+    dcinfo.dcq = static_cast<signed short>(_dcq*32768.0);
+
+    cout << "DCI: " << dcinfo.dci << "  DCQ: " << dcinfo.dcq << endl;
 
     fcdAppSetParam(FCD_CMD_APP_SET_DC_CORR, dcinfo.auc, 4);
 
@@ -206,7 +210,7 @@ void fcd_source_c::set_dc_corr(double dci, double dcq)
 
 
 // Set IQ phase and gain balance.
-void fcd_source_c::set_iq_corr(double gain, double phase)
+void fcd_source_c::set_iq_corr(double _gain, double _phase)
 {
     union {
         unsigned char auc[4];
@@ -216,11 +220,13 @@ void fcd_source_c::set_iq_corr(double gain, double phase)
         };
     } iqinfo;
 
-    if ((gain < -1.0) || (gain > 1.0) || (phase < -1.0) or (phase > 1.0))
+    if ((_gain < -1.0) || (_gain > 1.0) || (_phase < -1.0) || (_phase > 1.0))
         return;
 
-    iqinfo.phase = static_cast<signed short>(phase*32768.0);
-    iqinfo.gain = static_cast<signed short>(gain*32768.0);
+    iqinfo.phase = static_cast<signed short>(_phase*32768.0);
+    iqinfo.gain = static_cast<signed short>(_gain*32768.0);
+
+    cout << "IQ Ph: " << iqinfo.phase << "  IQ G: " << iqinfo.gain << endl;
 
     fcdAppSetParam(FCD_CMD_APP_SET_IQ_CORR, iqinfo.auc, 4);
 
