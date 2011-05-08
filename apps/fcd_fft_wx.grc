@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Sun May  8 15:49:31 2011</timestamp>
+  <timestamp>Sun May  8 18:02:35 2011</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -116,57 +116,6 @@
     <param>
       <key>_coordinate</key>
       <value>(300, 11)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>fcd_source_c</key>
-    <param>
-      <key>id</key>
-      <value>fcd_source_c_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>device_name</key>
-      <value>'hw:1'</value>
-    </param>
-    <param>
-      <key>freq</key>
-      <value>fcd_freq</value>
-    </param>
-    <param>
-      <key>lna</key>
-      <value>fcd_lna_gain</value>
-    </param>
-    <param>
-      <key>ppm</key>
-      <value>-120</value>
-    </param>
-    <param>
-      <key>dci</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>dcq</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>iq_phase</key>
-      <value>0.0</value>
-    </param>
-    <param>
-      <key>iq_gain</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(123, 192)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -311,8 +260,59 @@
       <value>0</value>
     </param>
   </block>
+  <block>
+    <key>fcd_source_c</key>
+    <param>
+      <key>id</key>
+      <value>fcd_source_c_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>device_name</key>
+      <value>hw:1</value>
+    </param>
+    <param>
+      <key>freq</key>
+      <value>fcd_freq</value>
+    </param>
+    <param>
+      <key>lna</key>
+      <value>fcd_lna_gain</value>
+    </param>
+    <param>
+      <key>ppm</key>
+      <value>-120</value>
+    </param>
+    <param>
+      <key>dci</key>
+      <value>0.0</value>
+    </param>
+    <param>
+      <key>dcq</key>
+      <value>0.0</value>
+    </param>
+    <param>
+      <key>iq_phase</key>
+      <value>0.0</value>
+    </param>
+    <param>
+      <key>iq_gain</key>
+      <value>1.0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(95, 192)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
   <connection>
-    <source_block_id>fcd_source_c_0</source_block_id>
+    <source_block_id>fcd_source_c_1</source_block_id>
     <sink_block_id>wxgui_fftsink2_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>

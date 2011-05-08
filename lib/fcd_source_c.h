@@ -113,7 +113,7 @@ public:
      *  \param _dci DC correction for I component (-1.0 to 1.0)
      *  \param _dcq DC correction for Q component (-1.0 to 1.0)
      * 
-     * Set DC offset correction in the device. Default is 1.0.
+     * Set DC offset correction in the device. Default is 0.0.
      */
     void set_dc_corr(double _dci, double _dcq);
     

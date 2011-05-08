@@ -12,7 +12,7 @@ self.$(id).set_lna_gain($lna)
 #if $ppm() != 115
 self.$(id).set_freq_corr($ppm)
 #end if
-#if ($dci() != 1.0) or ($dcq() != 1.0)
+#if ($dci() != 0.0) or ($dcq() != 0.0)
 self.$(id).set_dc_corr($dci,$dcq)
 #end if
 #if ($iq_phase() != 0.0) or ($iq_gain() != 1.0)
@@ -52,13 +52,13 @@ self.$(id).set_iq_corr($iq_phase,$iq_gain)
     <param>
         <name>DC I offset</name>
         <key>dci</key>
-        <value>1.0</value>
+        <value>0.0</value>
         <type>real</type>
     </param>
     <param>
         <name>DC Q offset</name>
         <key>dcq</key>
-        <value>1.0</value>
+        <value>0.0</value>
         <type>real</type>
     </param>
     <param>

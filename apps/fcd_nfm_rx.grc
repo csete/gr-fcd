@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Sun Apr 17 16:50:27 2011</timestamp>
+  <timestamp>Sun May  8 18:03:45 2011</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -368,96 +368,6 @@
     <param>
       <key>_coordinate</key>
       <value>(168, 726)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>fcd_source_c</key>
-    <param>
-      <key>id</key>
-      <value>fcd_source_c_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>device_name</key>
-      <value>hw:1</value>
-    </param>
-    <param>
-      <key>freq</key>
-      <value>freq</value>
-    </param>
-    <param>
-      <key>lna</key>
-      <value>20.0</value>
-    </param>
-    <param>
-      <key>ppm</key>
-      <value>115</value>
-    </param>
-    <param>
-      <key>dci</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>dcq</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>iq_phase</key>
-      <value>0.0</value>
-    </param>
-    <param>
-      <key>iq_gain</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(176, 157)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>gr_freq_xlating_fir_filter_xxx</key>
-    <param>
-      <key>id</key>
-      <value>xlating_fir_filter</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>ccc</value>
-    </param>
-    <param>
-      <key>decim</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>taps</key>
-      <value>xlate_filter_taps</value>
-    </param>
-    <param>
-      <key>center_freq</key>
-      <value>-(offset_coarse+offset_fine)</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(433, 189)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -984,6 +894,96 @@
       <value>0</value>
     </param>
   </block>
+  <block>
+    <key>gr_freq_xlating_fir_filter_xxx</key>
+    <param>
+      <key>id</key>
+      <value>xlating_fir_filter</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>ccc</value>
+    </param>
+    <param>
+      <key>decim</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>taps</key>
+      <value>xlate_filter_taps</value>
+    </param>
+    <param>
+      <key>center_freq</key>
+      <value>-(offset_coarse+offset_fine)</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(433, 189)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>fcd_source_c</key>
+    <param>
+      <key>id</key>
+      <value>fcd_source_c_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>device_name</key>
+      <value>hw:1</value>
+    </param>
+    <param>
+      <key>freq</key>
+      <value>freq</value>
+    </param>
+    <param>
+      <key>lna</key>
+      <value>20.0</value>
+    </param>
+    <param>
+      <key>ppm</key>
+      <value>-120</value>
+    </param>
+    <param>
+      <key>dci</key>
+      <value>0.0</value>
+    </param>
+    <param>
+      <key>dcq</key>
+      <value>0.0</value>
+    </param>
+    <param>
+      <key>iq_phase</key>
+      <value>0.0</value>
+    </param>
+    <param>
+      <key>iq_gain</key>
+      <value>1.0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(165, 157)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
   <connection>
     <source_block_id>xlating_fir_filter</source_block_id>
     <sink_block_id>fftsink</sink_block_id>
@@ -1015,12 +1015,6 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>fcd_source_c_0</source_block_id>
-    <sink_block_id>xlating_fir_filter</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>gr_simple_squelch_cc_0</source_block_id>
     <sink_block_id>nbfm_normal</sink_block_id>
     <source_key>0</source_key>
@@ -1029,6 +1023,12 @@
   <connection>
     <source_block_id>nbfm_normal</source_block_id>
     <sink_block_id>gr_multiply_const_vxx_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>fcd_source_c_1</source_block_id>
+    <sink_block_id>xlating_fir_filter</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
