@@ -110,16 +110,16 @@ public:
     void set_freq_corr(int ppm);
     
     /*! \brief Set DC offset correction.
-     *  \param dci DC correction for I component (-1.0 to 1.0)
-     *  \param dcq DC correction for Q component (-1.0 to 1.0)
+     *  \param _dci DC correction for I component (-1.0 to 1.0)
+     *  \param _dcq DC correction for Q component (-1.0 to 1.0)
      * 
      * Set DC offset correction in the device. Default is 1.0.
      */
     void set_dc_corr(double _dci, double _dcq);
     
     /*! \brief Set IQ phase and gain balance.
-     *  \param gain The gain correction (-1.0 to 1.0)
-     *  \param phase The phase correction (-1.0 to 1.0)
+     *  \param _gain The gain correction (-1.0 to 1.0)
+     *  \param _phase The phase correction (-1.0 to 1.0)
      * 
      * Set IQ phase and gain balance in the device. The default values
      * are 0.0 for phase and 1.0 for gain.
