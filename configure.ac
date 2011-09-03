@@ -83,6 +83,25 @@ dnl AX_BOOST_WSERIALIZATION
 dnl Doxygen used to create API docs
 GR_CHECK_DOXYGEN
 
+MACOSX="no"
+WINDOWS="no"
+
+echo $target
+
+case "$target" in
+     *-*-darwin*)
+        echo "Setting Mac OS X build"
+        MACOSX="yes"
+        ;;
+     *-*-win*)
+        echo "Setting Windows build"
+        WINDOWS="yes"
+        ;;
+esac
+
+AM_CONDITIONAL([MACOSX], [ test $MACOSX = "yes" ])
+AM_CONDITIONAL([WINDOWS], [ test $WINDOWS = "yes" ])
+
 
 AC_CONFIG_FILES([\
 	  Makefile \

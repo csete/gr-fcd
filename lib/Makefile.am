@@ -39,8 +39,17 @@ lib_LTLIBRARIES = libgnuradio-fcd.la
 ## FIXME: only linux; mac and win use other hidapi source
 libgnuradio_fcd_la_SOURCES = \
     fcd_source_c.cc \
-    fcd.c \
-    hid-libusb.c
+    fcd.c
+
+if MACOSX
+    libgnuradio_fcd_la_SOURCES += hidmac.c
+else
+if WINDOWS
+    libgnuradio_fcd_la_SOURCES += hidwin.cpp
+else
+    libgnuradio_fcd_la_SOURCES += hid-libusb.c
+endif
+endif
 
 libgnuradio_fcd_la_LIBADD = \
     $(GNURADIO_CORE_LA) \
