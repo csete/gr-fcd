@@ -29,7 +29,7 @@ include $(top_srcdir)/Makefile.common
 modinclude_HEADERS = \
     fcd_source_c.h
     
-#noinst_HEADERS = \
+noinst_HEADERS = \
     fcd.h \
     fcdhidcmd.h \
     hidapi.h
