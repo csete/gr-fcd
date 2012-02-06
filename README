@@ -9,7 +9,7 @@ wraps both the audio input and the control interface into one convenient
 GNU Radio source block with a complex data stream output that can be used
 in GNU Radio application written in C++, Python and the GNU Radio Companion.
 
-This package requires that gnuradio-core and gnuradio-audio 3.4 is already
+This package requires that gnuradio-core and gnuradio-audio 3.5 is already
 installed. It also depends on some GNU Radio prerequisites, such as Boost.
 On Linux you will also need libusb-1.0 for the HID control interface.
 
@@ -33,8 +33,6 @@ installation. Use the --help option to get a list.
 
 This package includes the hidapi: http://www.signal11.us/oss/hidapi/
 and the FCD API code from Qthid: http://qthid.sf.net/ 
- 
+
 This package was created by Alexandru Csete OZ9AEC, and it is based on the
 gr-howto-write-a-block example package by Eric Blossom and contributors.
-
-

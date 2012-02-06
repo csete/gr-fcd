@@ -22,7 +22,7 @@ dnl
 
 AC_INIT
 AC_PREREQ(2.57)
-AC_CONFIG_AUX_DIR([.])	
+AC_CONFIG_AUX_DIR([.])
 
 dnl Set the prefix to the default when --prefix is not specified.
 dnl This is critical for variable substitutions in the configure.
