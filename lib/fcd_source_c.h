@@ -130,6 +130,7 @@ private:
 
     audio_source::sptr fcd;  /*!< The audio input source */
     int d_freq_corr;         /*!< The frequency correction in ppm */
+    int d_freq_req;          /*!< The latest requested frequency in Hz */
 };
 
 #endif /* INCLUDED_FCD_SOURCE_C_H */
