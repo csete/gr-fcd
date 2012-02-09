@@ -52,7 +52,8 @@ fcd_source_c::fcd_source_c(const std::string device_name)
     : gr_hier_block2 ("fcd_source_c",
                       gr_make_io_signature (MIN_IN, MAX_IN, sizeof (gr_complex)),
                       gr_make_io_signature (MIN_OUT, MAX_OUT, sizeof (gr_complex))),
-    d_freq_corr(-120)
+    d_freq_corr(-120),
+    d_freq_req(0)
 {
     gr_float_to_complex_sptr f2c;
     
@@ -85,6 +86,7 @@ void fcd_source_c::set_freq(int freq)
         return;
     }
 
+    d_freq_req = freq;
     f *= 1.0 + d_freq_corr/1000000.0;
 
     fme = fcdAppSetFreq((int)f);
@@ -102,6 +104,7 @@ void fcd_source_c::set_freq(float freq)
         return;
     }
 
+    d_freq_req = (int)freq;
     f *= 1.0 + d_freq_corr/1000000.0;
 
     fme = fcdAppSetFreq((int)f);
@@ -120,6 +123,7 @@ void fcd_source_c::set_freq_khz(int freq)
         return;
     }
 
+    d_freq_req = freq*1000;
     f *= 1.0 + d_freq_corr/1000000.0;
 
     fme = fcdAppSetFreqkHz((int)(f/1000.0));
@@ -182,6 +186,8 @@ void fcd_source_c::set_lna_gain(float gain)
 void fcd_source_c::set_freq_corr(int ppm)
 {
     d_freq_corr = ppm;
+    // re-tune with new correction value
+    set_freq(d_freq_req);
 }
 
 
