@@ -45,7 +45,7 @@ if MACOSX
     libgnuradio_fcd_la_SOURCES += hidmac.c
 else
 if WINDOWS
-    libgnuradio_fcd_la_SOURCES += hidwin.cpp
+    libgnuradio_fcd_la_SOURCES += hidwin.c
 else
     libgnuradio_fcd_la_SOURCES += hid-libusb.c
 endif
