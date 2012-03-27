@@ -1,3 +1,9 @@
+
+------------------------------------------------------------------------
+ THIS CODE REPOSITORY IS OBSOLETE SINCE GR-FCD HAS BEEN INCLUDED IN THE
+ MAIN GNU RADIO REPOSITORY SONCE VERSION 3.5.3
+------------------------------------------------------------------------
+
 This package (and the resulting tarball) contains a GNU Radio block
 for the Funcube Dongle. The Funcube Dongle is a software defined radio
 receiver in a USB stick covering 64 MHz - 1.7 GHz. More info about the
