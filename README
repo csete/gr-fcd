@@ -1,7 +1,6 @@
-
 ------------------------------------------------------------------------
  THIS CODE REPOSITORY IS OBSOLETE SINCE GR-FCD HAS BEEN INCLUDED IN THE
- MAIN GNU RADIO REPOSITORY SONCE VERSION 3.5.3
+ MAIN GNU RADIO REPOSITORY SINCE VERSION 3.5.3
 ------------------------------------------------------------------------
 
 This package (and the resulting tarball) contains a GNU Radio block
